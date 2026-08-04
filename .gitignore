@@ -1,0 +1,5 @@
+/data/raw/
+/data/priv/
+*.log
+*.tmp
+rewl
