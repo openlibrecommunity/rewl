@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 )
@@ -11,6 +12,7 @@ func main() {
 		fmt.Println("Commands:")
 		fmt.Println("  ipload <country>  download IP list for country")
 		fmt.Println("  ipcount <country>  count IPs from file")
+		fmt.Println("  scan <country> --iface <if> --ports <p,p> --rate <n>  scan alive IPs")
 		os.Exit(1)
 	}
 
@@ -31,6 +33,27 @@ func main() {
 			os.Exit(1)
 		}
 		if err := ipcount(os.Args[2]); err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+	case "scan":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n>")
+			os.Exit(1)
+		}
+		country := os.Args[2]
+		fs := flag.NewFlagSet("scan", flag.ExitOnError)
+		iface := fs.String("iface", "", "network interface")
+		ports := fs.String("ports", "", "ports comma separated (e.g. 80,443)")
+		rate := fs.Int("rate", 0, "scan rate")
+		if err := fs.Parse(os.Args[3:]); err != nil {
+			os.Exit(1)
+		}
+		if *iface == "" || *ports == "" || *rate == 0 {
+			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n>")
+			os.Exit(1)
+		}
+		if err := scan(country, *iface, *ports, *rate); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}
