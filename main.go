@@ -46,14 +46,15 @@ func main() {
 		iface := fs.String("iface", "", "network interface")
 		ports := fs.String("ports", "", "ports comma separated (e.g. 80,443)")
 		rate := fs.Int("rate", 0, "scan rate")
+		routerMAC := fs.String("router-mac", "", "router MAC (for USB modems etc)")
 		if err := fs.Parse(os.Args[3:]); err != nil {
 			os.Exit(1)
 		}
 		if *iface == "" || *ports == "" || *rate == 0 {
-			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n>")
+			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n> [--router-mac <mac>]")
 			os.Exit(1)
 		}
-		if err := scan(country, *iface, *ports, *rate); err != nil {
+		if err := scan(country, *iface, *ports, *routerMAC, *rate); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}

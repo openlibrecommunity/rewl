@@ -36,15 +36,10 @@ type masscanRec struct {
 	} `json:"ports"`
 }
 
-func checkRawAccess(iface string) error {
-	// masscan needs CAP_NET_RAW. probe by running with --iflist or a dry check.
-	cmd := exec.Command("masscan", "--interface", iface, "-p1", "127.0.0.0/32", "--rate", "1")
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		s := string(out)
-		if strings.Contains(s, "permission") || strings.Contains(s, "raw") || strings.Contains(s, "root") {
-			return fmt.Errorf("no raw packet access. run with sudo or: sudo setcap cap_net_raw=eip $(which masscan)")
-		}
+func checkRawAccess() error {
+	// raw sockets require root or CAP_NET_RAW
+	if os.Geteuid() != 0 {
+		return fmt.Errorf("no raw packet access. run with sudo or: sudo setcap cap_net_raw=eip $(which masscan)")
 	}
 	return nil
 }
@@ -63,7 +58,7 @@ func parsePorts(s string) ([]int, error) {
 	return ports, nil
 }
 
-func scan(country, iface, portsStr string, rate int) error {
+func scan(country, iface, portsStr, routerMAC string, rate int) error {
 	zone := fmt.Sprintf("data/raw/%s.zone", strings.ToLower(country))
 	outPath := fmt.Sprintf("data/raw/%s.alive.yaml", strings.ToLower(country))
 
@@ -76,32 +71,50 @@ func scan(country, iface, portsStr string, rate int) error {
 		return err
 	}
 
-	if err := checkRawAccess(iface); err != nil {
+	if err := checkRawAccess(); err != nil {
 		return err
 	}
 
+	tmp, err := os.CreateTemp("", "rewl-scan-*.json")
+	if err != nil {
+		return err
+	}
+	tmpPath := tmp.Name()
+	_ = tmp.Close()
+	defer func() { _ = os.Remove(tmpPath) }()
+
 	started := time.Now()
 
-	cmd := exec.Command("masscan",
+	// -oJ to temp file so masscan progress stays on stderr/tty
+	args := []string{
 		"-iL", zone,
 		"-p", portsStr,
 		"--interface", iface,
 		"--rate", fmt.Sprintf("%d", rate),
-		"-oJ", "-",
-	)
+		"--wait", "3",
+		"-oJ", tmpPath,
+	}
+	if routerMAC != "" {
+		args = append(args, "--router-mac", routerMAC)
+	}
+	cmd := exec.Command("masscan", args...)
+	cmd.Stdout = os.Stderr
+	cmd.Stderr = os.Stderr
 
-	stdout, err := cmd.StdoutPipe()
+	if err := cmd.Run(); err != nil {
+		return err
+	}
+
+	finished := time.Now()
+
+	f, err := os.Open(tmpPath)
 	if err != nil {
 		return err
 	}
-	cmd.Stderr = os.Stderr
-
-	if err := cmd.Start(); err != nil {
-		return err
-	}
+	defer func() { _ = f.Close() }()
 
 	var results []scanResult
-	scanner := bufio.NewScanner(stdout)
+	scanner := bufio.NewScanner(f)
 	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
@@ -117,12 +130,6 @@ func scan(country, iface, portsStr string, rate int) error {
 			results = append(results, scanResult{IP: rec.IP, Port: p.Port})
 		}
 	}
-
-	if err := cmd.Wait(); err != nil {
-		return err
-	}
-
-	finished := time.Now()
 
 	out := scanOutput{
 		Country:    strings.ToLower(country),
