@@ -2,4 +2,4 @@
 /data/priv/
 *.log
 *.tmp
-rewl
+build/
