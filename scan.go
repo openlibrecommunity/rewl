@@ -13,8 +13,9 @@ import (
 )
 
 type scanResult struct {
-	IP   string `yaml:"ip"`
-	Port int    `yaml:"port"`
+	IP    string `yaml:"ip"`
+	Proto string `yaml:"proto"`
+	Port  int    `yaml:"port"`
 }
 
 type scanOutput struct {
@@ -32,7 +33,8 @@ type scanOutput struct {
 type masscanRec struct {
 	IP    string `json:"ip"`
 	Ports []struct {
-		Port int `json:"port"`
+		Port  int    `json:"port"`
+		Proto string `json:"proto"`
 	} `json:"ports"`
 }
 
@@ -89,6 +91,7 @@ func scan(country, iface, portsStr, routerMAC string, rate int) error {
 	args := []string{
 		"-iL", zone,
 		"-p", portsStr,
+		"--ping",
 		"--interface", iface,
 		"--rate", fmt.Sprintf("%d", rate),
 		"--wait", "3",
@@ -127,7 +130,7 @@ func scan(country, iface, portsStr, routerMAC string, rate int) error {
 			continue
 		}
 		for _, p := range rec.Ports {
-			results = append(results, scanResult{IP: rec.IP, Port: p.Port})
+			results = append(results, scanResult{IP: rec.IP, Proto: p.Proto, Port: p.Port})
 		}
 	}
 
