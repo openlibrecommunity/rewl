@@ -91,7 +91,6 @@ func scan(country, iface, portsStr, routerMAC string, rate int) error {
 	args := []string{
 		"-iL", zone,
 		"-p", portsStr,
-		"--ping",
 		"--interface", iface,
 		"--rate", fmt.Sprintf("%d", rate),
 		"--wait", "3",
