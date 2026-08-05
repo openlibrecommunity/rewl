@@ -60,17 +60,20 @@ func parsePorts(s string) ([]int, error) {
 	return ports, nil
 }
 
-func scan(country, iface, portsStr, routerMAC string, rate int) error {
+func scan(country, iface, portsStr, routerMAC string, rate int, resume bool) error {
 	zone := fmt.Sprintf("data/raw/%s.zone", strings.ToLower(country))
 	outPath := fmt.Sprintf("data/raw/%s.alive.yaml", strings.ToLower(country))
 
-	if _, err := os.Stat(zone); err != nil {
-		return fmt.Errorf("zone file not found: %s (run ipload first)", zone)
-	}
-
-	ports, err := parsePorts(portsStr)
-	if err != nil {
-		return err
+	var ports []int
+	if !resume {
+		if _, err := os.Stat(zone); err != nil {
+			return fmt.Errorf("zone file not found: %s (run ipload first)", zone)
+		}
+		p, err := parsePorts(portsStr)
+		if err != nil {
+			return err
+		}
+		ports = p
 	}
 
 	if err := checkRawAccess(); err != nil {
@@ -88,16 +91,25 @@ func scan(country, iface, portsStr, routerMAC string, rate int) error {
 	started := time.Now()
 
 	// -oJ to temp file so masscan progress stays on stderr/tty
-	args := []string{
-		"-iL", zone,
-		"-p", portsStr,
-		"--interface", iface,
-		"--rate", fmt.Sprintf("%d", rate),
-		"--wait", "3",
-		"-oJ", tmpPath,
-	}
-	if routerMAC != "" {
-		args = append(args, "--router-mac", routerMAC)
+	var args []string
+	if resume {
+		if _, err := os.Stat("paused.conf"); err != nil {
+			return fmt.Errorf("paused.conf not found, nothing to resume")
+		}
+		// --resume reads all params from paused.conf, only override output
+		args = []string{"--resume", "paused.conf", "-oJ", tmpPath}
+	} else {
+		args = []string{
+			"-iL", zone,
+			"-p", portsStr,
+			"--interface", iface,
+			"--rate", fmt.Sprintf("%d", rate),
+			"--wait", "3",
+			"-oJ", tmpPath,
+		}
+		if routerMAC != "" {
+			args = append(args, "--router-mac", routerMAC)
+		}
 	}
 	cmd := exec.Command("masscan", args...)
 	cmd.Stdout = os.Stderr

@@ -47,14 +47,15 @@ func main() {
 		ports := fs.String("ports", "", "ports comma separated (e.g. 80,443)")
 		rate := fs.Int("rate", 0, "scan rate")
 		routerMAC := fs.String("router-mac", "", "router MAC (for USB modems etc)")
+		resume := fs.Bool("resume", false, "resume from paused.conf")
 		if err := fs.Parse(os.Args[3:]); err != nil {
 			os.Exit(1)
 		}
-		if *iface == "" || *ports == "" || *rate == 0 {
-			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n> [--router-mac <mac>]")
+		if !*resume && (*iface == "" || *ports == "" || *rate == 0) {
+			fmt.Println("Usage: rewl scan <country> --iface <if> --ports <p,p> --rate <n> [--router-mac <mac>] [--resume]")
 			os.Exit(1)
 		}
-		if err := scan(country, *iface, *ports, *routerMAC, *rate); err != nil {
+		if err := scan(country, *iface, *ports, *routerMAC, *rate, *resume); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}
