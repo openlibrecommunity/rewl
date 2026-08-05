@@ -1,0 +1,115 @@
+EcoFilter                                          Functional
+                                                   URL filtering
+                                                                                              World network solutions vendor
+
+
+
+
+EcoFilter is an operator-grade product which                       The automatic updating and delta-packets download-
+assures URL filtering of entire provider’s traffic                 ing of RKN register data is implemented in EcoFilter.
+on the wire speed and blocks 100% of prohibit-                     The filtering URL lists can be assigned both to all
+ed resources according to the Roskomnadzor’s                       subscribers and to the individual subscriber according
+register (RKN), Ministry of Justice, and to the                    to his tariff. The RADIUS feature or proprietary
+provider’s lists.                                                  network protocol is used to identify subscriber. The
+                                                                   EcoFilter device can be complement with the service
+The EcoFilter functionality allows provider to fulfil the
+                                                                   gateway functionality (subscriber speed limitation,
+requirements of the law (federal law ##139, 149, 187,
+                                                                   Captive Portal redirect, URL-based Open Garden,
+436) in relation to unacceptable and prohibited
+                                                                   URL-based Policing, CG-NAT).
+internet resources and to offer additional services
+such a “Safe for children Internet” with a huge list               The EcoFilter is meant to be Russian product which is
+filtering (up to 30 million URLs). The product is being            officially confirmed by decision of Interdepartamental
+constantly updated in accordance with the legal                    Expert Council under the Ministry of Trade and the
+requirements.                                                      Ministry of Telecom and Mass Communications.
+
+
+
+
+                     Internet                                                             Internet
+
+
+
+                                  Prefiltering
+                                  ports: 80, 443
+     Border router                                                        Border router
+
+
+
+
+                                                                                                       EcoFilter
+          CG-NAТ                                    Filter                                             on the EcoSGE
+                                                                                                       platform
+                                                                                                       100% of provider`s
+                                                                                                       traffic
+
+           Router                                                                Router
+                                                                                                             Correct
+                                     1–2% passes by                                                          solution
+                                         Wrong
+                     Provider`s                                                           Provider`s
+                     network                                                              network
+The most used URL filtering method in Russia for                   ing GET request, non-standard header sequence
+today is the following: only small part of traffic is              and so on, the URL will be detected.
+channeled to the filtering system after preliminary
+                                                                   The EcoFilter device allows to log all subscriber GET
+router filtering (ACL, pulling of BGP routes, and so
+                                                                   requests in passing traffic and export them to the
+on).
+                                                                   external server for further processing (Clickstream
+Unlike most analogues, EcoFilter possess sufficient                logging). This provides an opportunity to analyze
+performance and allows to analyze the entire provid-               and profile subscriber interests and risks both for
+er traffic on all TCP ports what assures 100% filtering            specific subscriber and for entire provider’s subscrib-
+results according to the Revizor system data. The                  er base. Also, this feature allows provider to cooper-
+URL filtering performance is up to 160 Gbps per 1U                 ate mutually beneficial with the OTT services.
+what is the best result in Russia and the good result
+                                                                   EcoFilter device analyzes traffic passing through it
+even by world standards. This performance can
+                                                                   and allows to make an assessment of subscriber’s
+easily be scaled individually by adding devices for
+                                                                   Quality of Experience on multiple parameters (loss-
+specific customer needs.
+                                                                   es, delay, jitter, band, and so on) by making various
+In EcoFilter solution the mechanism of URL detecting               averaged QoE metrics (subscribers, resources, and
+in HTTP requests is provided. Even though subscrib-                so on). Among others, this feature allows to bring to
+er uses means to bypass restrictions as access via                 a qualitatively new level the work to prevent the
+non-standard server port, hiding URL by fragmentat-                outflow of subscribers from the provider.
+
+
+
+
+Universal platform               2020 / 2040                  4080                             4120 / 4160
+EcoSGE
+Throughput                       24 / 34 Gbps                  60 Gbps                         120 / 160 Gbps
+Connection Setups Per
+                                 2.3 M                         2.5 M                           5M
+Second
+Concurrent Sessions              32 million                    40 million                      150 million
+Network Interface
+       10 GE Fiber (SFP+)        2/4                           8                               12 / 16
+       1 GE Copper               6                             -                               -
+Logging Interface                1 x 10/100/1000BaseT          1 x 10/100/1000BaseT            1 x 10/100/1000BaseT
+Management Interface             1 x 10/100/1000BaseT          1 x 10/100/1000BaseT            1 x 10/100/1000BaseT
+Console Port                     RJ45 (RS232C)                 RJ45 (RS232C)                   RJ45 (RS232C)
+System Storage                   CF Industrial SLC             CF Industrial SLC               CF Industrial SLC
+Power Consumption
+                                 140W / 170W                   250W / 285W                     340W / 400W
+Typical/Max
+                                 Dual 200W RPS                 Dual 500W RPS                   Dual 500W RPS
+Power Supply
+                                 100-240 VAC (-36-72 DC)       100-240 VAC (-40-72 DC)         100-240 VAC (-40-72 DC)
+Cooling Fan                      Standard Fans                 Hot Swap Smart Fans             Hot Swap Smart Fans
+Dimensions                       430mm x 400mm x 44mm          440mm x 570mm x 44mm            440mm x 570mm x 44mm
+Rack Unit (Mountable)            1U                            1U                              1U
+
+
+
+
+                                       Web: www.rdp.ru
+                                       E-Mail: sales@rdp.ru
+                                       Phone: +7 495 204-9-204
+                                       Address: 121205, Russian Federation, Moscow,
+                                       Skolkovo Innovations Center,                                                 Resident of
+World network solutions vendor         Bolshoy Blvd, 42, building 1, room 156/8                              Skolkovo IT cluster
+

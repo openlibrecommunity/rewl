@@ -1,0 +1,99 @@
+EcoBRAS                               Services gateway
+                                      for network providers
+                                                                             World network solutions vendor
+
+
+
+
+EcoBRAS is a Services Gateway,                     The device can handle up to 250 thousand
+provided:                                          active concurrent users, for whom exists the
+                                                   speed limit rules for both directions.
+• Control of the subscriber access to the
+  data services;                                   Performance of the solution is up to 160 Gbps
+                                                   per unit, which exceeds the foreign analogues.
+• Access speed restricting;
+                                                   Subscriber traffic speed limiting is carried out in
+• Deactivating of the subscriber with              both directions (RX/TX), independently, with
+  redirecting him to the page of the need          increments of 64 Kbps.
+  to replenish the balance notification;           It is possible to create an “Open Garden” with a
+• Demonstration to the subscribers                 list of networks available for the disconnected
+                                                   subscribers: DNS-servers, company sites, pay-
+  information messages by forwarding to
+                                                   ment systems, banks and so on.
+  the portal.
+
+
+Universal platform       2020 / 2040               4080                        4120 / 4160
+EcoSGE
+Throughput               24 / 34 Gbps              60 Gbps                     120 / 160 Gbps
+Connection Setups Per
+                         2.3 M                     2.5 M                       5M
+Second
+Concurrent Sessions      32 million                40 million                  150 million
+Network Interface
+    10 GE Fiber (SFP+)   2/4                       8                           12 / 16
+    1 GE Copper          6                         -                           -
+Logging Interface        1 x 10/100/1000BaseT      1 x 10/100/1000BaseT        1 x 10/100/1000BaseT
+Management Interface     1 x 10/100/1000BaseT      1 x 10/100/1000BaseT        1 x 10/100/1000BaseT
+Console Port             RJ45 (RS232C)             RJ45 (RS232C)               RJ45 (RS232C)
+System Storage           CF Industrial SLC         CF Industrial SLC           CF Industrial SLC
+Power Consumption
+                         140W / 170W               250W / 285W                 340W / 400W
+Typical/Max
+                         Dual 200W RPS             Dual 500W RPS               Dual 500W RPS
+Power Supply
+                         100-240 VAC (-36-72 DC)   100-240 VAC (-40-72 DC)     100-240 VAC (-40-72 DC)
+Cooling Fan              Standard Fans             Hot Swap Smart Fans         Hot Swap Smart Fans
+Dimensions               430mm x 400mm x 44mm      440mm x 570mm x 44mm        440mm x 570mm x 44mm
+Rack Unit (Mountable)    1U                        1U                          1U
+To limit the upload and download speed or to                The IP-address and the MAC-address of the
+redirect to a website for refilling the balance of          user may be identified by the RADIUS protocol
+user account, EcoBRAS uses a set of configur-               in the moment of connection setup. For
+able policies and related services.                         unknown subscribers EcoBRAS may provide
+                                                            redirection to the web-service for the user
+Services are a set of actions performed in the              identification using third-party methods(for
+case when the source or destination address of              example, by SMS). According to the subscriber’s
+session matches to the specified Access Control             profile, it is assigned a set of services, each one
+List (ACL). The following operations may be                 takes into account the volume of transmitted
+performed: 'pass' action (with a speed limit),              and received data and sends it to the billing
+'block' action and 'redirect to the specified URL'          system in the RADIUS Accounting messages.
+action.
+                                                            In addition, the device supports a proprietary
+EcoBRAS may specify lists of the URLs (“white”              protocol for interaction with the billing system
+or “black” lists) as a policy in case of using              (description of the protocol is available on
+additional functional of EcoFilter. (You have to            request).
+purchase EcoFilter upgrade license).
+                                                            It is possible to manage a set of subscriber
+Up to six services may be active simultaneously             services in real-time (as in the case of the CoA
+for each user. Services may be specified statical-          RADIUS) with using multiple billing systems
+ly or obtained dynamically via the RADIUS                   together.
+protocol. Changing the set of services and their
+parameters for the subscriber may be performed              Vendor provides services for integration
+using the CoA feature of the RADIUS protocol.               EcoBRAS with any billing system. It may be
+                                                            performed using both an open API and the
+                                                            RADIUS protocol.
+
+             Positive
+           subscriber`s
+             balance
+
+                           Subscriber                  X                             Billing
+
+
+
+
+                                                        EcoBRAS
+             Negative            Payment
+           subscriber`s           portal                  on the
+             balance                                     EcoSGE                      Internet
+                                                         platform
+                           Subscriber
+
+
+                                    Web: www.rdp.ru
+                                    E-Mail: sales@rdp.ru
+                                    Phone: +7 495 204-9-204
+                                    Address: 121205, Russian Federation, Moscow,
+                                    Skolkovo Innovations Center,                                         Resident of
+World network solutions vendor      Bolshoy Blvd, 42, building 1, room 156/8                      Skolkovo IT cluster
+

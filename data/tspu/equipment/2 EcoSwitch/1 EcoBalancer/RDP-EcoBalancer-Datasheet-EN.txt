@@ -1,0 +1,115 @@
+EcoBalancer
+Network packet broker, Load Balancer                                                     World network solutions vendor
+
+
+
+
+In many network management tasks, there is a need           • NETCONF / YANG control.
+to redirect traffic for analysis and processing.
+                                                            • Options for inclusion "in the gap", OnStick, in the
+Network packet broker is a class of devices that
+                                                              LAG, on the copy of the traffic. LACP support.
+provide access to network traffic for analysis,
+monitoring, and processing systems. Consumer                • Support for working with traffic within VLAN (up to
+systems may include: URL filtering and analytics, DPI,        3 tags) and / or MPLS (up to 6 tags).
+performance and quality monitoring, security
+                                                            • Ability to create several balancing groups.
+systems, etc.
+RDP's EcoBalancer (Load Balancer) provides                  • Ability to select a hashing algorithm for balancing
+customizable batch broker and load balancer                   (layer-3, layer-4, nat-layer-3, nat-layer-4).
+functionality.                                              • Distribution of traffic between several analyzers so
+At the heart of the EcoBalancer is a P4                       that Upstream and Downstream packets of one
+programmable switch. Traffic processing at terabit            session or all traffic of one subscriber are
+speeds is provided. Various signs of L1-L4 OSI layers         guaranteed to pass through the same analysis
+are used for classification: physical - ports, link,          system.
+network and transport headers Ethernet / IP / TCP /         • Balancing traffic between individual processor
+UDP / ICMP.                                                   cores.
+EcoBalancer capabilities and features:                      • Ability to implement balancing of incoming IP
+• Transparent device at L2 level.                             packets with complex encapsulation (802.1q /
+                                                              MPLS / PPPoE).
+• Interfaces for external and internal connections -
+  10/25/40/50 / 100GE.                                      • Sending keepalive packets through analysis
+                                                              systems to determine their health.
+• Aggregation of traffic received from multiple
+  network sources.                                          • Offloading analysis systems by transparently
+                                                              passing individual flows of transit traffic that do not
+• Ability to connect to multiple clusters of analysis         require processing, for example, IP Multicast
+  systems.                                                    traffic.
+
+
+
+      Traffic data sources       EcoBalancer                           Traffic analysis systems
+                                                                                          Transfer to analysis systems with
+                                                                                          traffic return to the data
+                  Channels                               DDoS                             transmission channel.
+                                                         sensor           Filtration      It is possible to build service
+                                                                                          chains (Steering).
+      Optical
+      splitters                                                                           One-way transmission
+                                                          DPI             COPM3           with construction
+                                                                                          of service chains (Steering).
+       SPAN
+                                                                                                   One-way transmission
+                                       Replication                                                 with construction
+                  Channels             to multiple       QoE          COPM2        Monitoring      of service chains
+                                         groups                                                    (Steering).
+To connect to EcoBalancer traffic analysis systems,                                         ASBR
+QSFP28, QSFP + optical transceivers and QSFP + →
+4xSFP + DAC cables can be used, depending on the
+types of interfaces supported by the analysis
+systems.
+Connection example: towards the network — an                        Links: ISP(n)                        Nx100G LAG
+aggregate of several 100G links. The direction of                   WAN-VLAN: 2n-1                       OnStick
+                                                                    LAN-VLAN: 2n                         10/25/40/50/100GE
+transmission is determined by the VLAN number:
+odd — from WAN, even - from LAN. EcoBalancer
+sends LACPDU to all unit ports towards ASBR,                                                              EcoBalancer
+ensuring unit operation. At the entrance to
+EcoBalancer, the package is checked for integrity                LAN      WAN                               LAN          WAN
+and classified. Part of the traffic returns to the               rx/tx    rx/tx                             rx/tx        rx/tx
+channel bypassing the analyzers. The traffic required
+                                                                                      10/25/40/50/100GE
+for analysis is evenly balanced on the analyzer
+devices, thus ensuring the symmetry of forward and               tx/rx    tx/rx                             tx/rx        tx/rx
+backward traffic. To monitor the health of devices,              LAN      WAN                               LAN          WAN
+keepalive packets are passed through the analyzers.                                      Analyzers.
+If one of the devices fails, it is excluded from the                                   Balancing group
+balancing group. When all devices exit, the bypass
+mode is activated.                                                   VLAN                                       VLAN
+                                                                     swap                                       swap
+
+
+EcoSwitch Series                                    1020                      1032                           2065
+ Throughput                                     Up to 2.8 Tbps              Up to 3.2 Tbps                Up to 6.4 Tbps
+ Forwarding capacity                            Up to 2.0 Bpps              Up to 4.7 Bpps                Up to 9.5 Bpps
+ Standard 19” rack mount                                             1U                                             2U
+ QSFP28 transceivers cages                               8                            32                            65
+ SFP28 transceivers cages                                48                           -                             -
+ Packet buffer                                                                    22 MB
+ System memory                                                                8GB DDR4
+ SD/CF memory                                   SSD 8-120 GB                                    SSD 120 GB
+ CPU                                          Intel Xeon D-1527                             Intel Pentium D
+ Serial console                                                                   1 x RJ-45
+ Management port                                                            1 x 1000BASE-T
+ Redundant power supply                            2 x 550W                   2 x 600W                       2 x 1,100W
+ Typical consumption with all active ports            504W                         476W                        1024W
+ Hot-swappable fans                                      4                            5                             10
+ Operating temperature                                                       0 C .. 40 C
+                                                                                  o         o
+
+
+ Storage temperature                                                        -40 oC .. 70 oC
+ Operating humidity                                                5 % to 95 % non-condensing
+ Operating altitude                                                         0 to 10,000 feet
+ Weight                                                 9,5 kg                    10.0 kg                       14.3 kg
+
+
+
+
+                                  Web: www.rdp.ru
+                                  E-Mail: sales@rdp.ru
+                                  Phone: +7 495 204-9-204
+                                  Address: 121205, Russian Federation, Moscow,
+                                  Skolkovo Innovations Center,                                                         Resident of
+World network solutions vendor    Bolshoy Blvd, 42, building 1, room 156/8                                      Skolkovo IT cluster
+

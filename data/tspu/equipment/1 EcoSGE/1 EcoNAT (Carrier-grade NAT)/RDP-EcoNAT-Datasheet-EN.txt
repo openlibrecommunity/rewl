@@ -1,0 +1,131 @@
+EcoNAT                                   The most high-performance
+                                         CG-NAT for telecom providers
+                                                                                              World network solutions vendor
+
+
+
+
+                                                                                     Edge Router
+EcoNAT — is a carrier grade equipment oriented for                                              up to
+service providers that helps to solve the problem of IPv4                                      6x10 GbE
+address depletion, while maintaining the existing IPv4                                                              Intenet
+infrastructure, and smoothly migrate to IPv6 in the
+future.
+                                                               Peering
+Typical location for this solution in the service provider’s                                             Public address area
+network is between the edge router PE (Provider Edge)
+and core network routers — BGN/BRAS/Core. Links that                       1 GbE
+pass through the EcoNAT may consist of several                                                     EcoNAT
+physical joints of 10G, combined into one or more logical                                          on the EcoSGE platform
+channels, by LACP for example.
+                                                                Log-                                     Private address area
+                                                               server
+Features and benefits
+Smart Wire™ — device is transparent for all service type
+traffic including routing protocols BGP, OSPF, ISIS, STP,
+LACP, BFD.
+
+Logger — devices allow to log an information of all
+translations and user connections at speeds                    BRAS                  Core Router                 etc
+up to 6 million connections per second.
+
+
+Universal platform                 2020 / 2040                   4080                              4120 / 4160
+EcoSGE
+Throughput                         24 / 34 Gbps                  60 Gbps                           120 / 160 Gbps
+Connection Setups Per
+                                   2.3 M                         2.5 M                             5M
+Second
+Concurrent Sessions                32 million                    40 million                        150 million
+Network Interface
+    10 GE Fiber (SFP+)             2/4                           8                                 12 / 16
+    1 GE Copper                    6                             -                                 -
+Logging Interface                  1 x 10/100/1000BaseT          1 x 10/100/1000BaseT              1 x 10/100/1000BaseT
+Management Interface               1 x 10/100/1000BaseT          1 x 10/100/1000BaseT              1 x 10/100/1000BaseT
+Console Port                       RJ45 (RS232C)                 RJ45 (RS232C)                     RJ45 (RS232C)
+System Storage                     CF Industrial SLC             CF Industrial SLC                 CF Industrial SLC
+Power Consumption
+                                   140W / 170W                   250W / 285W                       340W / 400W
+Typical/Max
+                                   Dual 200W RPS                 Dual 500W RPS                     Dual 500W RPS
+Power Supply
+                                   100-240 VAC (-36-72 DC)       100-240 VAC (-40-72 DC)           100-240 VAC (-40-72 DC)
+Cooling Fan                        Standard Fans                 Hot Swap Smart Fans               Hot Swap Smart Fans
+Dimensions                         430mm x 400mm x 44mm          440mm x 570mm x 44mm              440mm x 570mm x 44mm
+Rack Unit (Mountable)              1U                            1U                                1U
+Multiple translation type support                                                 ACLs
+EcoNAT supports up to 32 concurrent NAT pools. They may vary by the               Access control lists associated with each pool are the selection criteria
+type of translation, public IPv4 address ranges, limiting of the                  for the pools. ACLs are analyzed in order of priority of the pools, and
+connections number for subscribers and the ranges of UDP and TCP                  may include both Source and Destination address of the IP packet.
+ports allocated during the translation.                                           Therefore, along with the main goal, service providers may use this
+                                                                                  solution to participate in peer-to-peer networks with overlapping IP
+                                                                                  ranges.
+
+
+
+
+EcoNAT                                         supports various types of translation simultaneously:
+                                               CGNAT/PAT, Basic NAT, static NAT 1:1
+
+BNAT                                                                              1:1
+BNAT (Basic NAT) – is a classic NAT, when the user leases the                     In the static mode (known as 1:1 translation), each public IP address is
+temporary allocated public IPv4 address during the session, and only the          statically and administratively attached to each IP address of user. The
+addresses are translated (ports remain the same). This mode has two               service provider is able to provide users with a static public IP address
+options: 'transparent', allowing incoming connections for any ports and           without changing the settings of the CPE of the user by using this
+'closed', allowing connection from the outside only for ports initiated           method.
+from within by the user.
+
+
+
+CG-NAT
+CGNAT / PAT (Port Address Translation) – is the main operation mode of the EcoNAT, that allows to share the use of public IPv4 addresses among
+multiple users. Addresses and ports are translated in this mode. The number of the TCP and UDP ports simultaneously used per user, may be limited.
+
+
+
+Full Cone NAT (EIM/EIF)                                                           IP pairing
+Full Cone NAT is the feature that identify CGNAT from the basic                   All of the user connections assigned to one pool, are attached to the
+NAT/PAT and provides maximum transparency CGNAT for a whole                       same IP address to ensure the best transparency of the CGNAT.
+range of applications, including mobile, P2P, games etc. EIM/EIF allows
+any external host to establish a connection from the outside on those
+ports, for which the stream was previously initiated by the user.                 Hairpinning
+                                                                                  Hairpinning enables two users within the NAT to communicate with each
+                                                                                  other through the NAT, whitout sending packets outside.
+Port Block Allocation (PBA)
+EcoNAT implements PBA (Port Block Allocation) to reduce the amount of             Aging
+data is necessary to log. Translation ports are given to users by the             During long inactivity (it depends on the pool settings and connection
+continuous blocks with the 64-512 range of ports instead of one. Thus,            status), idle connections have to be closed, releasing the ports. The port
+you have only two entries in the log for all port block: the allocation of        block is considered free in that case when the user has released all ports
+the block and upon release of the block.                                          in the range for that block and the timeout occurred.
+
+
+
+User quotas
+ЕсоNAT allows putting restriction to the number of ports and connections for a user individually for each pool. Using the hot reconfiguration, and multiple
+pools this feature allows the provider to allocate resources efficiently between IPv4 corporate and individual users.
+
+
+
+
+Translation logging                                                               Live reconfiguration
+EcoNAT provides the opportunity to log users network translations using           The device is able to apply configuration changes without breaking
+standard Syslog interface (Local_IP, Global_IP, Global_Port_Range,                existing user connections, which is an advantage over competing
+Protocol). The volume of logged information is ten times reduced due to           solutions. You may reduce the port restrictions or expand pools of public
+the PBA (the ports are allocated in the blocks of 64-512 units).                  addresses “on the fly”.
+
+
+Connection logging                                                                Management
+Supports logging of all connection (Local_IP, Local_Port,                         • Dedicated network interface management (the Console via SSH)
+Global_IP, Global_Port, Destination_IP, Destination_Port, Protocol).              • Dedicated serial port RS-232C
+                                                                                  • Command line interface (CLI)
+Logging protocols: Syslog, Netflow v9                                             • SNMP, Syslog, Alerting, TACACS+ (AAA)
+
+
+
+                                                Web: www.rdp.ru
+                                                E-Mail: sales@rdp.ru
+                                                Phone: +7 495 204-9-204
+                                                Address: 121205, Russian Federation, Moscow,
+                                                Skolkovo Innovations Center,                                                                     Resident of
+World network solutions vendor                  Bolshoy Blvd, 42, building 1, room 156/8                                                  Skolkovo IT cluster
+

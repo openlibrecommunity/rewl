@@ -1,0 +1,100 @@
+EcoSwitch                                       SDN Switch
+                                                                     World network solutions vendor
+
+
+
+
+EcoSwitch is genuine fast OpenFlow switch.                      SDN Controller
+Ideal for Wide Area Networks, clouds
+or virtualized data centers. Can be used as:
+• High performance OpenFlow-fabric               EcoSwitch                          EcoSwitch
+  for OpenStack
+
+• MPLS router in ISP network                                      EcoSwitch
+
+• TAP aggregation fabric switch                  EcoSwitch                          EcoSwitch
+• TOR switch
+
+Implements OF 1.3.5 actions, instructions and
+matching fields.
+Available in standard 1U/2U 19” rack mount      Supported transceivers and cables
+factor.
+                                                • 100GBASE-LR4 10km SMF
+Also can be installed in 21” Open Rack with
+                                                • 100GBASE-SR4 100m OM3 MMF,
+Open Rack Switch Adapter.
+                                                  150m OM4 MMF
+
+Data plane ports                                • 100GBASE-CR4 4xSFP28 25G DAC
+                                                  0.5 to 3m (passive and active)
+32/65 (depends on model) data plane ports
+implemented as QSFP28 transceivers cages,       • 40GBASE-LR4 10km SMF
+each of them can be configured as:              • 40GBASE-SR4 100m OM3 MMF,
+• 100 GbE                                         150m OM4 MMF
+• 4 x 25 GbE                                    • 40GBASE-SR4 4x10GBASE-SR
+                                                  100m OM3 MMF, 150m OM4 MMF
+• 40 GbE
+                                                • 40GBASE-CR4 4xSFP+10GBASE-CR DAC
+• 4 x 10 GbE
+                                                  0.5 to 3m
+• 2 x 50 GbE
+                                                • 40GBASE-CR4 DAC 0.5 to 3m (passive
+                                                  and active)
+Hardware features                                         • 4+1 (8+2) redundant, hot-swappable fan
+                                                             modules. Air flow direction from rear
+• Dedicated 1 GE port for management and
+                                                             to front.
+   connection to OpenFlow controller.
+
+• USB type A port for external storage                    Software features
+   media.                                                 • Support Jumbo Frames up to 9,216 bytes.
+• All ports located on the front of unit;
+                                                          • Support multiple controllers and controller
+   PSUs and fans accessible from rear.                       role change.
+• Energy Efficiency: less that 310W typical
+                                                          • Controller support via both in-band and
+   power consumption without pluggable                       out-of-band ports.
+   optics.
+                                                          • Balancing traffic in a line while maintaining
+• Hot-swappable load-sharing, redundant
+                                                             the flow rate to the core.
+   AC or -48V DC PSUs.
+                                                          • Maskable and exact match flow tables.
+
+
+
+
+EcoSwitch Series                                   1020                  1032                         2065
+ Throughput                                    Up to 2.8 Tbps          Up to 3.2 Tbps            Up to 6.4 Tbps
+ Forwarding capacity                           Up to 2.0 Bpps          Up to 4.7 Bpps            Up to 9.5 Bpps
+ Standard 19” rack mount                                          1U                                     2U
+ QSFP28 transceivers cages                            8                       32                         65
+ SFP28 transceivers cages                            48                       -                           -
+ Packet buffer                                                             22 MB
+ System memory                                                           8GB DDR4
+ SD/CF memory                                   SSD 8-120 GB                             SSD 120 GB
+ CPU                                          Intel Xeon D-1527                      Intel Pentium D
+ Serial console                                                           1 x RJ-45
+ Management port                                                       1 x 1000BASE-T
+ Redundant power supply                           2 x 550W               2 x 600W                     2 x 1,100W
+ Typical consumption with all active ports          504W                   476W                        1024W
+ Hot-swappable fans                                   4                       5                          10
+ Operating temperature                                                  0 C .. 40 C
+                                                                          o          o
+
+
+ Storage temperature                                                   -40 oC .. 70 oC
+ Operating humidity                                             5 % to 95 % non-condensing
+ Operating altitude                                                    0 to 10,000 feet
+ Weight                                             9,5 kg                 10.0 kg                      14.3 kg
+
+
+
+
+                                  Web: www.rdp.ru
+                                  E-Mail: sales@rdp.ru
+                                  Phone: +7 495 204-9-204
+                                  Address: 121205, Russian Federation, Moscow,
+                                  Skolkovo Innovations Center,                                                 Resident of
+World network solutions vendor    Bolshoy Blvd, 42, building 1, room 156/8                              Skolkovo IT cluster
+

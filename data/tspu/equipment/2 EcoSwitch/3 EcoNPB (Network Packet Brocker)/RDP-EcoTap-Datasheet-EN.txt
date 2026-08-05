@@ -1,0 +1,119 @@
+EcoTap
+pre-filtering, modification, distribution and transmission
+                                                                                                  World network solutions vendor
+
+of traffic at terabit speeds
+
+
+
+
+The solution on the “traffic copy” allows from                     Router
+
+one point of presence to carry out:
+                                                                                            Management
+                                                                                            system
+• DPI analysis for the needs of operational-search
+  measures;
+                                                                            TAP
+                                                                                                       SORM2                Filtering
+• URL filtering;
+• Provide opportunities for long-term storage of
+  traffic metadata;                                                                                     DPI
+                                                                                                                            SORM3
+                                                                                 SDN
+• Provide opportunities for redirecting information                           Loadbalancer
+  flows regarding AntiDDoS solutions;                                                                                      Yarovaya`s
+                                                                                                        Any
+                                                                                                                              Law
+                                                                                                    other services
+• Any other traffic analysis with third-party services.
+                                                                   Router
+
+
+
+
+EcoSwitch Series                                      1020                        1032                           2065
+ Throughput                                        Up to 2.8 Tbps            Up to 3.2 Tbps                   Up to 6.4 Tbps
+ Forwarding capacity                              Up to 2.0 Bpps              Up to 4.7 Bpps                  Up to 9.5 Bpps
+ Standard 19” rack mount                                               1U                                             2U
+ QSFP28 transceivers cages                                 8                           32                             65
+ SFP28 transceivers cages                                  48                          -                               -
+ Packet buffer                                                                      22 MB
+ System memory                                                                    8GB DDR4
+ SD/CF memory                                      SSD 8-120 GB                                   SSD 120 GB
+ CPU                                             Intel Xeon D-1527                            Intel Pentium D
+ Serial console                                                                    1 x RJ-45
+ Management port                                                             1 x 1000BASE-T
+ Redundant power supply                               2 x 550W                    2 x 600W                       2 x 1,100W
+ Typical consumption with all active ports                504W                      476W                             1024W
+ Hot-swappable fans                                        4                           5                              10
+ Operating temperature                                                            0 C .. 40 C
+                                                                                   o          o
+
+
+ Storage temperature                                                          -40 oC .. 70 oC
+ Operating humidity                                                  5 % to 95 % non-condensing
+ Operating altitude                                                          0 to 10,000 feet
+ Weight                                                   9,5 kg                    10.0 kg                          14.3 kg
+What is pre-filter for?
+• A passive optical splitter is installed on the link
+  between two devices of the Operator, which
+  transmits a copy of the traffic from this link to the
+  analyzer;
+• Depending on the task being solved by the
+  analyzer, only Upstream traffic, only Downstream             Upstream
+  traffic or traffic of two directions simultaneously           traffic
+                                                                              Splitter
+  can be transmitted to it;
+• The traffic analyzer should have sufficient
+  performance in order to isolate from all traffic           Downstream
+                                                               traffic                                       Analyzer
+  coming to it only one that requires further
+  processing or analysis;
+• With increasing traffic, the Operator is forced to
+  install more and more expensive analyzers to
+  cope with the growing load.
+
+Using pre-filtering
+• To reduce the load on the analyzer, it is necessary
+  to install a filter in front of the analyzer, which will
+  discard the traffic that is not interesting to it;
+• Routers are sometimes used as prefilters,
+                                                              Upstream
+  comparable in performance with those whose                   traffic
+  traffic from the link is removed for analysis;                              Splitter
+• Sometimes, dedicated servers are placed in front
+  of the analyzer that are comparable in
+                                                             Downstream
+  performance with the analyzers themselves, but               traffic                      Filter           Analyzer
+  whose task is exclusively to filter out “excess”
+  traffic;
+• EcoTap solution by RDP company allows you to
+  effectively solve the problem of traffic prefiltration.
+
+EcoFilter sharing option
+• Passive optical splitter removes all Upstream and
+  Downstream traffic;
+• EcoTap performs pre-filtering;
+• EcoFilter analyzes the traffic coming to it to solve
+  the following tasks:                                         Upstream                     EcoTAP           EcoFilter
+                                                                traffic
+• •     URL-filtering of prohibited resources in the                          Splitter
+        ILV registry;
+• •     Collection and uploading of Clickstream              Downstream
+        statistics;                                            traffic                                  Click-
+                                                                                HTTP Redirect (HTTP)    stream
+• •     Collection and upload of Quality                                         TCP RST (HTTPS)        QoE
+        of Experience (QoE) metrics.                                                                          Collector
+                                                                                                               (Syslog
+                                                                                                               Server)
+
+
+
+                                     Web: www.rdp.ru
+                                     E-Mail: sales@rdp.ru
+                                     Phone: +7 495 204-9-204
+                                     Address: 121205, Russian Federation, Moscow,
+                                     Skolkovo Innovations Center,                                             Resident of
+World network solutions vendor       Bolshoy Blvd, 42, building 1, room 156/8                          Skolkovo IT cluster
+

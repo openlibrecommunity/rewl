@@ -1,0 +1,112 @@
+EcoQoE, Shortlist и Clickstream
+Innovative solutions for subscriber retention and service promotion
+                                                                              World network solutions vendor
+
+
+
+
+EcoQoE is a software component compatible             • Getting subscriber feedback – frequently
+with the Service Gateway Engine series                  subscriber leaves without any call to the
+(EcoNAT, EcoFILTER, EcoBRAS) and the DPI                support service of the provider;
+complex of the RDP.RU company. This product is
+                                                      • Installation of the TCP-probe including STB –
+designed to collect statistics data used to
+                                                        does not reflect the shape of all subscriber
+evaluate the Quality of Experience (QoE) and to
+                                                        devices in the household;
+compile metrics for further analysis of user
+experience and adaptive management of the             • Poll by calling all subscribers with quality
+quality of services provided.                           control – expensive method, usually only
+                                                        annoying subscribers.
+Subscriber Base Retention
+The main reason for subscriber to outflow is          Easy to Use
+dissatisfaction with the quality of services.         Install the EcoQoE in 3 steps:
+Perception of the service quality depends on
+factors beyond the provider control such as: the      1. Mount RDP.RU sensors for all incoming traffic
+Wi-Fi range is overloaded, the CPE-device is          or some specific part of it (e.g. HTTP/HTTPS).
+outdated, the malware which declines the              2. Deploy the database with the RDP.RU
+computer performance is set, and so on. The           visualization on the server.
+EcoQoE allows to provider to look through the         3. Integrate it with an existing OSS/BSS system
+subscriber’s NAT and to diagnose this kind of         to enrich data received from the sensors.
+problem on the network segment. By finding out
+the potentially unsatisfied subscribers, provider     Sensor tracks the total number of packets,
+can promptly take measures to keep them. As a         number of TCP retransmits (incoming and
+rule, the for current subscriber base requires less   outgoing), delay between SYN ACK and ACK,
+expenditure and brings greater economic effect        and other parameters for each session. Metrics
+than attraction of the new subscribers. The less      based on the collected data are used for further
+the subscriber outflow the higher provider’s          user experience analysis. Data visualization
+image!                                                allows to discover easily if the response time
+                                                      increases and the speed decreases for specific
+Previous Attempts to Solve the Problem and            subscriber. The subscribers can be grouped in
+Their Limitations                                     many ways – by delay time, by access device, by
+                                                      network aggregation segment, by CPE type (if
+• The Wi-Fi routers with the IP-SLA agent – the       such an information is available in OSS/BSS) and
+  complicated solution, actually was suitable         so on.
+  only for Green field projects (new network
+                                                      There’s NO NEED to install any additional
+  construction);
+                                                      software and hardware on the subscriber’s side!
+Universal Mechanism                                       To process Clickstream the modern methods,
+                                                          such a neural network which is taught by real
+The EcoQoE complex is compatible with all
+                                                          events of subscriber outflow or purchase of
+devices, access technologies, and service
+                                                          additional service and can predict such an event
+models. On the one physical device can be used
+                                                          in the future, are used. The individual proposal
+both QoE functionality and other features such
+                                                          can be offered to the subscriber in many ways –
+as CG NAT, URL filtering, DPI. Also, QoE
+                                                          phone call, mass text messaging, Telegram and
+functionality can be used singly.
+                                                          Viber message and so on.
+Task Processing                                           On the one physical device can be used
+                                                          simultaneously both Shortlist and Clickstream
+• Discover subscribers with the considerable              functionality and other features such as CG NAT,
+  delay or with the great number of TCP                   URL filtering, DPI. Also, Shortlist and Clickstream
+  packets re-sending → Notification to Campaign           functionality can be used singly along with the
+  Management → Phone call to the subscriber.              QoE feature.
+• Discover Wi-Fi problem → Technician visits to
+  replace Wi-Fi.                                          Fast Response
+
+• Existing problem for the group of subscribers           Subscriber visits the rival site → Trigger:
+  → Team of technicians visits to check node (for         “subscriber visited rival site” → Signal to
+  example, patch cord needs to be replaced or             Campaign Management → Phone call to the
+  re-crimped).                                            subscriber.
+                                                          Subscriber visits site where provider sells
+Shortlist и Clickstream                                   devices or content → Trigger: “subscriber is
+Monitor the subscriber loyalty by analyzing               interested in products and services which can be
+site surfing                                              sold by provider” → Personalized proposal for the
+                                                          subscriber.
+Shortlist is the feature that allows to specify list
+of resources (URLs) each visit of subscribers to
+                                                          How to Subordinate a Company to Subscriber
+which will be logged. Using this feature the
+                                                          Loyalty Goals
+subscriber’s intention to change provider can be
+predicted if a rival provider URL is included into        • QoE effects on KPI of support service,
+Shortlist.                                                  operation department, and management.
+Clickstream is the more general feature which             • QoE data are integrated with OSS/BSS.
+providers log data collecting of all resources
+                                                          • QoE parameters are monitored from the
+visited by subscriber during specific period of
+                                                            subscriber’s acquisition and during whole
+time. At the moment it is one of the best
+                                                            subscriber lifecycle.
+business tools. Subscriber surfs web-resources,
+provider monitor his visits and the using this            • Monetize subscriber’s interest in additional
+information gets an idea of potential subscriber –          services.
+service buyer to propose him the most effective
+                                                          • Work with outflow predictors from Shortlist.
+solution.
+
+
+
+
+                                  Web: www.rdp.ru
+                                  E-Mail: sales@rdp.ru
+                                  Phone: +7 495 204-9-204
+                                  Address: 121205, Russian Federation, Moscow,
+                                  Skolkovo Innovations Center,                                         Resident of
+World network solutions vendor    Bolshoy Blvd, 42, building 1, room 156/8                      Skolkovo IT cluster
+
