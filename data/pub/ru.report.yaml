@@ -1,0 +1,49 @@
+country: ru
+total_endpoints: 32002
+unique_ips: 29438
+by_port:
+  "443": 16551
+  "80": 15451
+by_proto:
+  tcp: 32002
+top_subnets:
+- cidr: 185.215.4.0/24
+  count: 105
+- cidr: 176.57.64.0/24
+  count: 104
+- cidr: 91.206.127.0/24
+  count: 103
+- cidr: 95.181.177.0/24
+  count: 103
+- cidr: 195.208.66.0/24
+  count: 102
+- cidr: 91.233.216.0/24
+  count: 102
+- cidr: 91.233.217.0/24
+  count: 101
+- cidr: 176.57.66.0/24
+  count: 100
+- cidr: 77.88.0.0/24
+  count: 99
+- cidr: 91.221.164.0/24
+  count: 98
+- cidr: 155.212.234.0/24
+  count: 97
+- cidr: 87.240.166.0/24
+  count: 97
+- cidr: 95.163.239.0/24
+  count: 97
+- cidr: 176.57.65.0/24
+  count: 96
+- cidr: 91.231.235.0/24
+  count: 94
+- cidr: 185.71.67.0/24
+  count: 93
+- cidr: 5.255.221.0/24
+  count: 93
+- cidr: 91.233.218.0/24
+  count: 93
+- cidr: 95.129.236.0/24
+  count: 93
+- cidr: 95.181.181.0/24
+  count: 92

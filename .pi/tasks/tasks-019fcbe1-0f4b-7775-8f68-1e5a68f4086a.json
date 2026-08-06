@@ -1,0 +1,65 @@
+{
+  "nextId": 6,
+  "tasks": [
+    {
+      "id": "1",
+      "subject": "Изучить архив twl",
+      "description": "Получить и полностью изучить openlibrecommunity/twl: историю сканов, команды, параметры, результаты и изменения методики.",
+      "status": "completed",
+      "activeForm": "Изучаю архив twl",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1786002323613,
+      "updatedAt": 1786002554857
+    },
+    {
+      "id": "2",
+      "subject": "Извлечь факты из Telegram-экспорта",
+      "description": "Разобрать result.json и материалы AyuGram Desktop по белым спискам, DNS, CDN, XHTTP, olcRTC и другим методам. Отделить проверяемые факты от сообщений и готовых конфигов.",
+      "status": "completed",
+      "activeForm": "Извлекаю факты из Telegram-экспорта",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1786002329842,
+      "updatedAt": 1786002631618
+    },
+    {
+      "id": "3",
+      "subject": "Актуализировать L3/L4/L7 замеры на живом БС",
+      "description": "Иваново, дата Aug 6. Проверить на интерфейсе enp0s20u7: UDP теперь работает (раньше NO_RESP), TTL/расположение ТСПУ, SNI-фильтрация, QUIC, порты. Сохранить команды и вывод. Обновить таблицу протокол/статус из старой статьи.",
+      "status": "pending",
+      "activeForm": "Актуализирую L3/L4/L7 замеры",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1786002423968,
+      "updatedAt": 1786002657654
+    },
+    {
+      "id": "4",
+      "subject": "Написать rewl analyze",
+      "description": "Утилита анализа data/pub/ru.alive.yaml: уникальные IP, распределение по портам, топ /24 по плотности, ASN и организации (нужна база ASN), сравнение со старым сканом 63126. Вывод в data/pub.",
+      "status": "in_progress",
+      "activeForm": "Пишу rewl analyze",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1786002423969,
+      "updatedAt": 1786002657662
+    },
+    {
+      "id": "5",
+      "subject": "Собрать черновик статьи",
+      "description": "Белые списки: делюкс. От имени Mikhailo Trubochki, строгий не-ИИ стиль, без em-dash. Разделы: ретроспектива, устройство ТСПУ (data/tspu), методика, результаты нового скана, что masscan не видит, L3/L4/L7, география, ретроспектива методов обхода (VLESS/XHTTP, Functions, API Gateway закрыт, olcRTC, xDNS, TURN, CDN-обход), выбор метода. Упомянуть блокировку zarazaexe, OLC, старую статью.",
+      "status": "pending",
+      "activeForm": "Собираю черновик статьи",
+      "metadata": {},
+      "blocks": [],
+      "blockedBy": [],
+      "createdAt": 1786002423970,
+      "updatedAt": 1786002423970
+    }
+  ]
+}
