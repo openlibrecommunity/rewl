@@ -15,6 +15,7 @@ func Run() {
 		fmt.Println("  scan <country> --iface <if> --ports <p,p> --rate <n>  scan alive IPs")
 		fmt.Println("  analyze <country>  analyze scan results")
 		fmt.Println("  refine <country> --iface <if> --ports <p,p> --rate <n>  rescan discovered /24 subnets")
+		fmt.Println("  verify <country> --iface <if> --ports <p,p> --rate <n>  verify endpoints with nmap")
 		os.Exit(1)
 	}
 
@@ -90,6 +91,28 @@ func Run() {
 			os.Exit(1)
 		}
 		if err := refine(country, *iface, *ports, *routerMAC, *rate, *retries); err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+	case "verify":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>]")
+			os.Exit(1)
+		}
+		country := os.Args[2]
+		fs := flag.NewFlagSet("verify", flag.ExitOnError)
+		iface := fs.String("iface", "", "network interface")
+		ports := fs.String("ports", "", "ports comma separated")
+		rate := fs.Int("rate", 500, "nmap minimum and maximum rate")
+		retries := fs.Int("retries", 3, "nmap retries")
+		if err := fs.Parse(os.Args[3:]); err != nil {
+			os.Exit(1)
+		}
+		if *iface == "" || *ports == "" || *rate < 1 || *retries < 0 {
+			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>]")
+			os.Exit(1)
+		}
+		if err := verify(country, *iface, *ports, *rate, *retries); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}
