@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"fmt"
@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/goccy/go-yaml"
+
+	"rewl/pkg/model"
 )
 
 func refine(country, iface, ports, routerMAC string, rate, retries int) error {
@@ -18,7 +20,7 @@ func refine(country, iface, ports, routerMAC string, rate, retries int) error {
 		return err
 	}
 
-	var previous scanOutput
+	var previous model.Scan
 	if err := yaml.Unmarshal(data, &previous); err != nil {
 		return err
 	}

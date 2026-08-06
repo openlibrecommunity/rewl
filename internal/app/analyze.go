@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"fmt"
@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"github.com/goccy/go-yaml"
+
+	"rewl/pkg/model"
 )
 
 type analyzeReport struct {
@@ -35,7 +37,7 @@ func analyze(country string) error {
 		return err
 	}
 
-	var scan scanOutput
+	var scan model.Scan
 	if err := yaml.Unmarshal(data, &scan); err != nil {
 		return err
 	}

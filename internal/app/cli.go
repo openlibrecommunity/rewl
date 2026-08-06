@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"flag"
@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func main() {
+func Run() {
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: rewl <command> [args]")
 		fmt.Println("Commands:")

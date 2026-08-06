@@ -10,7 +10,7 @@ import (
 )
 
 func Build() error {
-	return sh.Run("go", "build", "-o", "build/rewl", ".")
+	return sh.Run("go", "build", "-o", "build/rewl", "./cmd/rewl")
 }
 
 func Run() error {

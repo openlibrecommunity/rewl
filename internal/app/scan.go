@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"bufio"
@@ -10,24 +10,9 @@ import (
 	"time"
 
 	"github.com/goccy/go-yaml"
+
+	"rewl/pkg/model"
 )
-
-type scanResult struct {
-	IP    string `yaml:"ip"`
-	Proto string `yaml:"proto"`
-	Port  int    `yaml:"port"`
-}
-
-type scanOutput struct {
-	Country    string       `yaml:"country"`
-	Iface      string       `yaml:"iface"`
-	Ports      []int        `yaml:"ports"`
-	Rate       int          `yaml:"rate"`
-	StartedAt  time.Time    `yaml:"started_at"`
-	FinishedAt time.Time    `yaml:"finished_at"`
-	Total      int          `yaml:"total"`
-	Results    []scanResult `yaml:"results"`
-}
 
 // masscan json record
 type masscanRec struct {
@@ -133,7 +118,7 @@ func scanZone(country, zone, outPath, iface, portsStr, routerMAC string, rate in
 	}
 	defer func() { _ = f.Close() }()
 
-	var results []scanResult
+	var results []model.Result
 	scanner := bufio.NewScanner(f)
 	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
 	for scanner.Scan() {
@@ -147,11 +132,11 @@ func scanZone(country, zone, outPath, iface, portsStr, routerMAC string, rate in
 			continue
 		}
 		for _, p := range rec.Ports {
-			results = append(results, scanResult{IP: rec.IP, Proto: p.Proto, Port: p.Port})
+			results = append(results, model.Result{IP: rec.IP, Proto: p.Proto, Port: p.Port})
 		}
 	}
 
-	out := scanOutput{
+	out := model.Scan{
 		Country:    strings.ToLower(country),
 		Iface:      iface,
 		Ports:      ports,
