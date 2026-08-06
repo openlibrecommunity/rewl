@@ -1,5 +1,5 @@
 # rewl
 
-white list's: deluxe.
+white list's
 
 by Mikhailo Trubochki
