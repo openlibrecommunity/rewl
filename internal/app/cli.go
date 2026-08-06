@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 )
 
 func Run() {
@@ -16,6 +17,7 @@ func Run() {
 		fmt.Println("  analyze <country>  analyze scan results")
 		fmt.Println("  refine <country> --iface <if> --ports <p,p> --rate <n>  rescan discovered /24 subnets")
 		fmt.Println("  verify <country> --iface <if> --ports <p,p> --rate <n>  verify endpoints with nmap")
+		fmt.Println("  enrich <country> --iface <if> --mmdb <file>  add ASN, PTR, TLS and HTTP names")
 		os.Exit(1)
 	}
 
@@ -96,7 +98,7 @@ func Run() {
 		}
 	case "verify":
 		if len(os.Args) < 3 {
-			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>]")
+			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>] [--batch <n>]")
 			os.Exit(1)
 		}
 		country := os.Args[2]
@@ -105,14 +107,37 @@ func Run() {
 		ports := fs.String("ports", "", "ports comma separated")
 		rate := fs.Int("rate", 500, "nmap minimum and maximum rate")
 		retries := fs.Int("retries", 3, "nmap retries")
+		batch := fs.Int("batch", 1000, "checkpoint batch size")
 		if err := fs.Parse(os.Args[3:]); err != nil {
 			os.Exit(1)
 		}
-		if *iface == "" || *ports == "" || *rate < 1 || *retries < 0 {
-			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>]")
+		if *iface == "" || *ports == "" || *rate < 1 || *retries < 0 || *batch < 1 {
+			fmt.Println("Usage: rewl verify <country> --iface <if> --ports <p,p> --rate <n> [--retries <n>] [--batch <n>]")
 			os.Exit(1)
 		}
-		if err := verify(country, *iface, *ports, *rate, *retries); err != nil {
+		if err := verify(country, *iface, *ports, *rate, *retries, *batch); err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+	case "enrich":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: rewl enrich <country> --iface <if> --mmdb <file> [--workers <n>] [--timeout <duration>]")
+			os.Exit(1)
+		}
+		country := os.Args[2]
+		fs := flag.NewFlagSet("enrich", flag.ExitOnError)
+		iface := fs.String("iface", "", "network interface")
+		mmdb := fs.String("mmdb", "data/raw/mmdb/dbip-asn-lite.mmdb", "ASN MMDB file")
+		workers := fs.Int("workers", 100, "parallel workers")
+		timeout := fs.Duration("timeout", 3*time.Second, "per-request timeout")
+		if err := fs.Parse(os.Args[3:]); err != nil {
+			os.Exit(1)
+		}
+		if *iface == "" || *workers < 1 || *timeout <= 0 {
+			fmt.Println("Usage: rewl enrich <country> --iface <if> --mmdb <file> [--workers <n>] [--timeout <duration>]")
+			os.Exit(1)
+		}
+		if err := enrich(country, *iface, *mmdb, *workers, *timeout); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}
