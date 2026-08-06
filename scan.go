@@ -63,7 +63,10 @@ func parsePorts(s string) ([]int, error) {
 func scan(country, iface, portsStr, routerMAC string, rate int, resume bool) error {
 	zone := fmt.Sprintf("data/raw/%s.zone", strings.ToLower(country))
 	outPath := fmt.Sprintf("data/raw/%s.alive.yaml", strings.ToLower(country))
+	return scanZone(country, zone, outPath, iface, portsStr, routerMAC, rate, resume, 0)
+}
 
+func scanZone(country, zone, outPath, iface, portsStr, routerMAC string, rate int, resume bool, retries int) error {
 	var ports []int
 	if !resume {
 		if _, err := os.Stat(zone); err != nil {
@@ -106,6 +109,9 @@ func scan(country, iface, portsStr, routerMAC string, rate int, resume bool) err
 			"--rate", fmt.Sprintf("%d", rate),
 			"--wait", "3",
 			"-oJ", tmpPath,
+		}
+		if retries > 0 {
+			args = append(args, "--retries", fmt.Sprintf("%d", retries))
 		}
 		if routerMAC != "" {
 			args = append(args, "--router-mac", routerMAC)
