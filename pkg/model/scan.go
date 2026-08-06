@@ -38,3 +38,18 @@ type Enriched struct {
 	Total      int       `yaml:"total"`
 	Hosts      []Host    `yaml:"hosts"`
 }
+
+type SNIName struct {
+	Name    string   `yaml:"name"`
+	IPs     []string `yaml:"ips"`
+	Sources []string `yaml:"sources"`
+}
+
+type SNIReport struct {
+	Country    string    `yaml:"country"`
+	StartedAt  time.Time `yaml:"started_at"`
+	FinishedAt time.Time `yaml:"finished_at"`
+	Hosts      int       `yaml:"hosts"`
+	Total      int       `yaml:"total"`
+	Names      []SNIName `yaml:"names"`
+}

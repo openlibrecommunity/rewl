@@ -18,6 +18,7 @@ func Run() {
 		fmt.Println("  refine <country> --iface <if> --ports <p,p> --rate <n>  rescan discovered /24 subnets")
 		fmt.Println("  verify <country> --iface <if> --ports <p,p> --rate <n>  verify endpoints with nmap")
 		fmt.Println("  enrich <country> --iface <if> --mmdb <file>  add ASN, PTR, TLS and HTTP names")
+		fmt.Println("  sni <country> [--workers <n>] [--timeout <duration>]  collect domain names")
 		os.Exit(1)
 	}
 
@@ -138,6 +139,26 @@ func Run() {
 			os.Exit(1)
 		}
 		if err := enrich(country, *iface, *mmdb, *workers, *timeout); err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+	case "sni":
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: rewl sni <country> [--workers <n>] [--timeout <duration>]")
+			os.Exit(1)
+		}
+		country := os.Args[2]
+		fs := flag.NewFlagSet("sni", flag.ExitOnError)
+		workers := fs.Int("workers", 200, "parallel workers")
+		timeout := fs.Duration("timeout", 3*time.Second, "per-request timeout")
+		if err := fs.Parse(os.Args[3:]); err != nil {
+			os.Exit(1)
+		}
+		if *workers < 1 || *timeout <= 0 {
+			fmt.Println("Usage: rewl sni <country> [--workers <n>] [--timeout <duration>]")
+			os.Exit(1)
+		}
+		if err := collectSNI(country, *workers, *timeout); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
 			os.Exit(1)
 		}
