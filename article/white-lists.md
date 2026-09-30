@@ -497,7 +497,7 @@ GitHub: https://github.com/openlibrecommunity
 
 Чат: https://t.me/Openlibrecommunitychat
 
-Сайт zarazaex: https://zarazaex.xyz/
+Сайт zarazaex: https://[DEL]/
 
 ## Поддержать OLC
 
